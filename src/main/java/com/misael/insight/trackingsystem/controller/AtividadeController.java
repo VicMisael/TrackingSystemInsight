@@ -44,7 +44,7 @@ public class AtividadeController {
        }
         return new ResponseEntity<Atividade>(new Atividade(),HttpStatus.BAD_REQUEST);
     }
-    @DeleteMapping(value ="/{id}")
+    @DeleteMapping()
     void deleteAtividadeFromUsuario(@RequestParam Long id) {
 
         usuarioService.deleteAtividadesFromUsuarioById(id);
