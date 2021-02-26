@@ -1,5 +1,7 @@
 package com.misael.insight.trackingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +19,7 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 
 public class Atividade {
@@ -35,6 +38,7 @@ public class Atividade {
     private String descricao;
 
     @ManyToMany(mappedBy = "atividades")
+    @JsonIgnore
     private Set<Usuario> usuarios=new HashSet<>();
 
     @ManyToOne

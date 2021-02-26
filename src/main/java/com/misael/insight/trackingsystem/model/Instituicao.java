@@ -1,5 +1,7 @@
 package com.misael.insight.trackingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +19,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 
 public class Instituicao {
@@ -35,5 +38,6 @@ public class Instituicao {
 
     @OneToMany
     @JoinColumn(name = "CD_ATIVIDADE")
+    @JsonIgnore
     private List<Atividade> atividades;
 }
