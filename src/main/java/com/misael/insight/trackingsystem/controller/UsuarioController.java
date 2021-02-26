@@ -41,7 +41,7 @@ public class UsuarioController {
         return new ResponseEntity<Usuario>(new Usuario(), HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("/saveUsuario")
+    @PostMapping()
     ResponseEntity<Usuario> salvarUsuario(@RequestBody Usuario user) {
         return new ResponseEntity<Usuario>(usuarioService.save(user),HttpStatus.ACCEPTED);
     }
