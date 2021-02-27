@@ -1,6 +1,8 @@
 package com.misael.insight.trackingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,10 +40,11 @@ public class Atividade {
     private String descricao;
 
     @ManyToMany(mappedBy = "atividades")
-    @JsonIgnore
+    @JsonBackReference
     private Set<Usuario> usuarios=new HashSet<>();
 
     @ManyToOne
+    @JsonManagedReference
     private Instituicao instituicao;
 
 

@@ -48,9 +48,6 @@ public class UsuarioController {
     }
 
     @DeleteMapping
-    void deleteUsuario(@RequestParam Long id) {
-        usuarioService.delete(id);
-    }
 
     @PostMapping(value = "add-atividade-usuario")
     ResponseEntity<Object> addAtividadeToUsuario(@RequestBody Long idUser, Long idAtividade) {
