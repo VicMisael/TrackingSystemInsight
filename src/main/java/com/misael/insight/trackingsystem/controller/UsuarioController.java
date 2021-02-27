@@ -26,9 +26,10 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
     @Autowired
-    public UsuarioController(UsuarioService usuarioService){
-        this.usuarioService=usuarioService;
+    public UsuarioController(UsuarioService usuarioService) {
+        this.usuarioService = usuarioService;
     }
+
     @GetMapping()
     List<Usuario> all() {
         return usuarioService.findAll();
@@ -43,7 +44,7 @@ public class UsuarioController {
 
     @PostMapping()
     ResponseEntity<Usuario> salvarUsuario(@RequestBody Usuario user) {
-        return new ResponseEntity<Usuario>(usuarioService.save(user),HttpStatus.ACCEPTED);
+        return new ResponseEntity<Usuario>(usuarioService.save(user), HttpStatus.OK);
     }
 
     @DeleteMapping
@@ -51,7 +52,10 @@ public class UsuarioController {
         usuarioService.delete(id);
     }
 
-
+    @PostMapping(value = "add-atividade-usuario")
+    ResponseEntity<Object> addAtividadeToUsuario(@RequestBody Long idUser, Long idAtividade) {
+        return usuarioService.addAtividadeById(idUser, idAtividade) ? new ResponseEntity<Object>(null, HttpStatus.OK) : new ResponseEntity<Object>(null, HttpStatus.BAD_REQUEST);
+    }
 
 
 }
