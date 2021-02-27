@@ -1,14 +1,5 @@
 package com.misael.insight.trackingsystem.model.dto;
 
-import com.misael.insight.trackingsystem.model.Atividade;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;

@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Repository
 public interface UsuarioRepository extends CrudRepository<Usuario,Long> {
@@ -16,6 +15,10 @@ public interface UsuarioRepository extends CrudRepository<Usuario,Long> {
     @Query(value = "Delete from usuario_atividade where atividade_id = ?1",nativeQuery = true)
     void deleteAtividadeById(Long id);
     //@Query(value= "")
-
+    @Transactional
+    @Modifying
+    @Query(value = "Insert into usuario_atividades(usuario_id,atividade_id) values (?1,?2)",nativeQuery = true)
+    void addAtividadeById(Long idUsuario,Long IdAtividade);
+    //@Query(value= "")
 
 }

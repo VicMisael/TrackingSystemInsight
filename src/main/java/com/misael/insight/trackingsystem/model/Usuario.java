@@ -1,5 +1,7 @@
 package com.misael.insight.trackingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,6 +36,7 @@ public class Usuario {
 
     @ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name="Usuario_atividade",joinColumns = @JoinColumn(name="usuario_id"),inverseJoinColumns = @JoinColumn(name="atividade_id"))
+    @JsonManagedReference
     private Set<Atividade> atividades=new HashSet<>();
 
 

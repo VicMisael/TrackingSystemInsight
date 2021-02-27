@@ -2,6 +2,7 @@ package com.misael.insight.trackingsystem.service;
 
 import com.misael.insight.trackingsystem.model.Atividade;
 import com.misael.insight.trackingsystem.model.Usuario;
+import com.misael.insight.trackingsystem.repository.AtividadeRepository;
 import com.misael.insight.trackingsystem.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,12 @@ import java.util.Set;
 public class UsuarioService {
 
     private UsuarioRepository usuarioRepository;
+    private AtividadeRepository atividadeRepository;
 
     @Autowired
-    public UsuarioService(UsuarioRepository usuarioRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository,AtividadeRepository atividadeRepository) {
         this.usuarioRepository = usuarioRepository;
+        this.atividadeRepository=atividadeRepository;
     }
 
     @Transactional
@@ -50,6 +53,14 @@ public class UsuarioService {
             return true;
         } else
             return false;
+    }
+    @Transactional
+   public boolean addAtividadeById(Long idUsuario,Long IdAtividade){
+        if(usuarioRepository.findById(idUsuario).isPresent() && atividadeRepository.findById(IdAtividade).isPresent()) {
+            usuarioRepository.addAtividadeById(idUsuario, IdAtividade);
+            return true;
+        }
+        return false;
     }
 
 }
