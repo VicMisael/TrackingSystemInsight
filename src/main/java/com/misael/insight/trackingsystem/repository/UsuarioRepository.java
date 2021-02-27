@@ -13,7 +13,7 @@ import java.util.List;
 public interface UsuarioRepository extends CrudRepository<Usuario,Long> {
     @Transactional
     @Modifying
-    @Query(value = "Delete from usuario_atividade ua where ua.atividade_id = ?1",nativeQuery = true)
+    @Query(value = "Delete from usuario_atividade where atividade_id = ?1",nativeQuery = true)
     void deleteAtividadeById(Long id);
     //@Query(value= "")
 

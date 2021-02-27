@@ -46,8 +46,8 @@ public class UsuarioController {
         return new ResponseEntity<Usuario>(usuarioService.save(user),HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping
-    void deleteUsuario(@RequestParam Long id) {
+    @DeleteMapping("/{id}")
+    void deleteUsuario(@PathVariable Long id) {
         usuarioService.delete(id);
     }
 
