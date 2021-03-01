@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("usuarios")
@@ -53,7 +53,11 @@ public class UsuarioController {
     }
 
     @PostMapping(value = "add-atividade-usuario")
-    ResponseEntity<Object> addAtividadeToUsuario(@RequestBody Long idUser, Long idAtividade) {
+    ResponseEntity<Object> addAtividadeToUsuario(@RequestBody Map<String,Long> data) {
+        Long idUser=data.get("idUser");
+        Long idAtividade=data.get("idAtividade");
+        System.out.println(idUser);
+        System.out.println(idAtividade);
         return usuarioService.addAtividadeById(idUser, idAtividade) ? new ResponseEntity<Object>(null, HttpStatus.OK) : new ResponseEntity<Object>(null, HttpStatus.BAD_REQUEST);
     }
 

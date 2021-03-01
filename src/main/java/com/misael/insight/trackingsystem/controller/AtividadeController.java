@@ -2,9 +2,9 @@ package com.misael.insight.trackingsystem.controller;
 
 import com.misael.insight.trackingsystem.model.Atividade;
 import com.misael.insight.trackingsystem.model.Usuario;
-import com.misael.insight.trackingsystem.service.AtividadeService;
-import com.misael.insight.trackingsystem.service.InstituicaoService;
-import com.misael.insight.trackingsystem.service.UsuarioService;
+import com.misael.insight.trackingsystem.service.*;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,6 +29,7 @@ public class AtividadeController {
     UsuarioService usuarioService;
     InstituicaoService instituicaoService;
 
+    @Autowired
     public AtividadeController(UsuarioService usuarioService, AtividadeService atividadeService, InstituicaoService instituicaoService) {
         this.atividadeService = atividadeService;
         this.usuarioService = usuarioService;
