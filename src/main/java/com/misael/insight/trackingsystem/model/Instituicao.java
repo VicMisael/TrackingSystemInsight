@@ -1,6 +1,5 @@
 package com.misael.insight.trackingsystem.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -39,6 +38,6 @@ public class Instituicao {
 
     @OneToMany
     @JoinColumn(name = "CD_ATIVIDADE")
-    @JsonBackReference
+    @JsonIgnore
     private List<Atividade> atividades;
 }

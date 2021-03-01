@@ -1,15 +1,23 @@
 package com.misael.insight.trackingsystem.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,7 +44,7 @@ public class Usuario {
 
     @ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name="Usuario_atividade",joinColumns = @JoinColumn(name="usuario_id"),inverseJoinColumns = @JoinColumn(name="atividade_id"))
-    @JsonManagedReference
+    @JsonIgnore
     private Set<Atividade> atividades=new HashSet<>();
 
 
