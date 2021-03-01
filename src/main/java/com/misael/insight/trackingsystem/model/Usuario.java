@@ -44,7 +44,6 @@ public class Usuario {
 
     @ManyToMany(cascade={CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name="Usuario_atividade",joinColumns = @JoinColumn(name="usuario_id"),inverseJoinColumns = @JoinColumn(name="atividade_id"))
-    @JsonIgnore
     private Set<Atividade> atividades=new HashSet<>();
 
 

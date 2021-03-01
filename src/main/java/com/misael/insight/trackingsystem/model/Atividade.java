@@ -40,6 +40,7 @@ public class Atividade {
     private String descricao;
 
     @ManyToMany(mappedBy = "atividades")
+    @JsonIgnore
     private Set<Usuario> usuarios=new HashSet<>();
 
     @ManyToOne
