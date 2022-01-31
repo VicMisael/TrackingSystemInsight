@@ -20,8 +20,8 @@ public class InstituicaoService {
     }
 
     @Transactional
-    public void save(Instituicao instituicao){
-        instituicaoRepository.save(instituicao);
+    public Instituicao save(Instituicao instituicao){
+        return instituicaoRepository.save(instituicao);
     }
 
     public List<Instituicao> findAll(){
