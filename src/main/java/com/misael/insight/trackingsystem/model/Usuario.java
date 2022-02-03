@@ -16,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -46,6 +47,16 @@ public class Usuario {
     @JoinTable(name="Usuario_atividade",joinColumns = @JoinColumn(name="usuario_id"),inverseJoinColumns = @JoinColumn(name="atividade_id"))
     private Set<Atividade> atividades=new HashSet<>();
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return nome.equals(usuario.nome) && email.equals(usuario.email) && telefonePcontato.equals(usuario.telefonePcontato) && nascimento.equals(usuario.nascimento);
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, email, telefonePcontato, nascimento);
+    }
 }

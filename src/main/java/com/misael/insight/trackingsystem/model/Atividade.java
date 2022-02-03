@@ -5,14 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -36,12 +31,24 @@ public class Atividade {
     @Column(name="DS_ATIVIDADE")
     private String descricao;
 
-    @ManyToMany(mappedBy = "atividades")
+    @ManyToMany
     @JsonIgnore
     private Set<Usuario> usuarios=new HashSet<>();
 
-    @ManyToOne
+    @ManyToOne()
+    @JoinColumn(name="instituicao_id")
     private Instituicao instituicao;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Atividade atividade = (Atividade) o;
+        return Objects.equals(nomeAtividade, atividade.nomeAtividade) && Objects.equals(horas, atividade.horas) && Objects.equals(descricao, atividade.descricao);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(nomeAtividade, horas, descricao);
+    }
 }

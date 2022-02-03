@@ -41,7 +41,7 @@ public class InstituicaoServiceTests {
                 .CNPJ("32345678")
                 .build();
         Instituicao saved = service.save(instituicao);
-        assertThat(service.findByid(saved.getId()))
+        assertThat(service.findByid(saved.getId()).get())
                 .isNotNull()
                 .isEqualTo(instituicao);
     }
