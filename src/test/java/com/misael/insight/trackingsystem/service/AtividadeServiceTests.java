@@ -95,7 +95,7 @@ public class AtividadeServiceTests {
 
     @Test
     public void testInsertUserWithoutExist() {
-        assertThrows(TransientObjectException.class, () -> {
+        assertThrows(org.springframework.dao.InvalidDataAccessApiUsageException.class, () -> {
             Set<Usuario> usuariosSet = new HashSet<>();
             usuariosSet.add(Usuario.builder().nome("usuario").email("email@email").nascimento(new Date()).build());
             Atividade atividade3 = Atividade.builder()
