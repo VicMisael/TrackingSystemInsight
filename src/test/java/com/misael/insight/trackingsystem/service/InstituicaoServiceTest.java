@@ -2,7 +2,8 @@ package com.misael.insight.trackingsystem.service;
 
 import com.misael.insight.trackingsystem.TrackingsystemApplication;
 import com.misael.insight.trackingsystem.model.Instituicao;
-import org.junit.Test;
+import org.junit.Before;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class InstituicaoServiceTest {
     @Autowired
     InstituicaoService service;
 
-    @BeforeAll
+    @Before
     public void contextLoads() {
         assertThat(service).isNotNull();
     }
