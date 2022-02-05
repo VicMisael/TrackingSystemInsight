@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TrackingsystemApplication.class)
-public class InstituicaoServiceTests {
+public class InstituicaoServiceTest {
     @Autowired
     InstituicaoService service;
 

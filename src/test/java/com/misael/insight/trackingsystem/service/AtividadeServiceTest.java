@@ -25,7 +25,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TrackingsystemApplication.class)
-public class AtividadeServiceTests {
+public class AtividadeServiceTest {
 
     @Autowired
     AtividadeService atividadeService;

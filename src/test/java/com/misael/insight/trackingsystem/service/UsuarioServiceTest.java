@@ -21,7 +21,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = TrackingsystemApplication.class)
-public class UsuarioServiceTests {
+public class UsuarioServiceTest {
     @Autowired
     UsuarioService service;
 
