@@ -24,7 +24,7 @@ public class InstituicaoServiceTest {
     }
 
     @Test
-    public void testInsertInstituicao(){
+    public void testInsertInstituicao() {
         Instituicao instituicao = Instituicao.builder()
                 .NomeInstituicao("Instituicao")
                 .CNPJ("12345678")
@@ -36,7 +36,7 @@ public class InstituicaoServiceTest {
     }
 
     @Test
-    public void testFindById(){
+    public void testFindById() {
         Instituicao instituicao = Instituicao.builder()
                 .NomeInstituicao("Instituicao2")
                 .CNPJ("32345678")
@@ -46,8 +46,19 @@ public class InstituicaoServiceTest {
                 .isNotNull()
                 .isEqualTo(instituicao);
     }
+
     @Test
-    public void testFindAll(){
+    public void testFindWrongId() {
+        Instituicao instituicao = Instituicao.builder()
+                .NomeInstituicao("Instituicao2")
+                .CNPJ("32345678")
+                .build();
+        Instituicao saved = service.save(instituicao);
+        assertThat(service.findByid(199L)).isEmpty();
+    }
+
+    @Test
+    public void testFindAll() {
         Instituicao instituicao = Instituicao.builder()
                 .NomeInstituicao("Instituicao2")
                 .CNPJ("32345678")
